@@ -25,6 +25,7 @@
 #include "task.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "amr_timer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,7 +60,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern ETH_HandleTypeDef heth;
-extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
+extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern UART_HandleTypeDef huart1;
@@ -175,7 +176,11 @@ void TIM1_UP_TIM10_IRQHandler(void)
   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
+  static uint32_t tick = 0;
+  static const uint32_t period = 1000;
 
+  amr_is_timer_elapsed(&tick, period);
+  tick++;
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
 }
 
@@ -229,7 +234,7 @@ void OTG_FS_IRQHandler(void)
   /* USER CODE BEGIN OTG_FS_IRQn 0 */
 
   /* USER CODE END OTG_FS_IRQn 0 */
-  HAL_HCD_IRQHandler(&hhcd_USB_OTG_FS);
+  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
   /* USER CODE BEGIN OTG_FS_IRQn 1 */
 
   /* USER CODE END OTG_FS_IRQn 1 */

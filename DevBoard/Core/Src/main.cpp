@@ -30,13 +30,19 @@ extern "C"
 #include "rtc.h"
 #include "sdio.h"
 #include "usart.h"
-#include "usb_host.h"
+#include "usb_device.h"
 #include "gpio.h"
 }
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "CppUTest/CommandLineTestRunner.h"
+
+extern "C"
+{
+#include "amr_poller.h"
+#include "amr_serial_port.h"
+}
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -103,14 +109,21 @@ int main(void)
   MX_FATFS_Init();
   // MX_IWDG_Init();
   MX_RTC_Init();
-  MX_USART1_UART_Init();
+  // MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  printf("Come on!\n");
 
-  const char * av_override[] = { "exe", "-v" };
+	amr_poller.model[0] = 'M';
+	amr_poller.serial_no[0] = 123456789;
 
-  CommandLineTestRunner::RunAllTests(2, av_override);
+	amr_poller_state = START;
 
+	amr_serial_init();
+	amr_poller_init();
+
+
+	// const char * av_override[] = { "exe", "-v" };
+
+	// CommandLineTestRunner::RunAllTests(2, av_override);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -166,7 +179,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV16;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {

@@ -51,7 +51,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 void MX_FREERTOS_Init(void);
+
 /* Application specific configuration options. */
 #include "FreeRTOSConfig.h"
 
