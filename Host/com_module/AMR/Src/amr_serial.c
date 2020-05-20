@@ -6,12 +6,12 @@
  */
 
 /**
- * Platform Specific Includes
+ * Standart Library Includes
  */
 #include <string.h>
 
 /**
- * User Defined Header Files
+ * User Defined Includes
  */
 #include "amr_serial.h"
 #include "app_assert.h"
@@ -21,7 +21,10 @@
  */
 amr_serial_t amr_serial;
 
-char rx_data[16 * 1024];
+static amr_serial_t *amr_serial_get_structure(void)
+{
+	return &amr_serial;
+}
 
 /**
  * @brief Checks the serial receive operation is completed
@@ -71,6 +74,10 @@ bool amr_serial_is_timeout(uint32_t *tick)
 	return is_timeout;
 }
 
+/**
+ * @brief Triggers callback function when the data is ready to process data
+ * @param amr_serial
+ */
 void amr_serial_is_rx_data_ready(amr_serial_t *amr_serial)
 {
 	if (amr_serial_is_receive_comp(amr_serial->is_rec_started, amr_serial->is_rec_timeout))
@@ -78,4 +85,13 @@ void amr_serial_is_rx_data_ready(amr_serial_t *amr_serial)
 		APP_ASSERT_TRUE(amr_serial->rx_data_ready == NULL);
 		amr_serial->rx_data_ready();
 	}
+}
+
+/**
+ * @brief Data Consumer should be pointed as function pointer
+ * @param rx_data_ready_cb
+ */
+void amr_serial_rx_init(vptr rx_data_ready_cb)
+{
+	amr_serial_get_structure()->rx_data_ready = rx_data_ready_cb;
 }

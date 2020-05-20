@@ -5,10 +5,20 @@
  *      Author: serbay.ozkan
  */
 
+/**
+ * Standart Library Includes
+ */
 #include <stddef.h>
 
+/**
+ * User Defined Includes
+ */
 #include "amr_timer.h"
+#include "app_assert.h"
 
+/**
+ * Typedef Structure and Enums
+ */
 amr_vptr_to_func amr_timer_callback;
 
 /**
@@ -20,7 +30,8 @@ void amr_is_timer_elapsed(uint32_t* tick, uint32_t period)
 {
 	if (*tick >= period)
 	{
-		if (amr_timer_callback != NULL) amr_timer_callback();
+		APP_ASSERT_TRUE(amr_timer_callback == NULL);
+		amr_timer_callback();
 		*tick = 0;
 	}
 }

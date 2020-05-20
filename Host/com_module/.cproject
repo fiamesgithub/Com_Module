@@ -22,6 +22,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/CPPUTEST/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/AMR/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/ASSERT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/MEM}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1850241702" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -33,6 +34,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/CPPUTEST/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/AMR/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/ASSERT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/MEM}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.47784824" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -43,6 +45,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/CPPUTEST/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/AMR/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/ASSERT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/MEM}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.341951266" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -56,10 +59,10 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="UTILS/ASSERT|CPPUTEST|AMR|CPPUTEST/src|AMR/Test|AMR/Src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="UTILS|UTILS/MEM|UTILS/ASSERT|CPPUTEST|AMR|CPPUTEST/src|AMR/Test|AMR/Src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="AMR"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="CPPUTEST"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="UTILS/ASSERT"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="UTILS"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -86,6 +89,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/CPPUTEST/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/AMR/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/ASSERT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/MEM}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1361826406" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -97,6 +101,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/CPPUTEST/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/AMR/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/ASSERT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/MEM}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2053341017" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -107,6 +112,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/CPPUTEST/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/AMR/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/ASSERT}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/com_module/UTILS/MEM}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2108314931" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>

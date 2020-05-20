@@ -40,5 +40,6 @@ bool amr_serial_is_receive_comp(bool is_rec_started, bool is_rec_timeout);
 void amr_serial_rec_data_byte_ready(const char ready_byte, char* buffer, uint32_t* idx);
 bool amr_serial_is_timeout(uint32_t *tick);
 void amr_serial_is_rx_data_ready(amr_serial_t *amr_serial);
+void amr_serial_rx_init(vptr rx_data_ready_cb);
 
 #endif /* INC_AMR_SERIAL_H_ */

@@ -5,15 +5,24 @@
  *      Author: serbay.ozkan
  */
 
+/**
+ * Standart Library Includes
+ */
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
 
+/**
+ * User Defined Includes
+ */
 #include "amr_poller.h"
 #include "amr_serial.h"
 #include "amr_timer.h"
+#include "app_assert.h"
 
+/**
+ * Typedef Structure and Enums
+ */
 amr_poller_t amr_poller;
 amr_poller_state_t amr_poller_state;
 
@@ -93,7 +102,7 @@ void amr_poller_task(void)
 
 	switch (amr_poller_state) {
 		case START:
-			assert(amr_serial.init(300));
+			APP_ASSERT_FALSE(amr_serial.init(300));
 			amr_update_selected_meter(meter_id);
 			amr_create_start_message(amr_get_poller_struct()->serial_no[meter_id],
 									data,
@@ -105,7 +114,7 @@ void amr_poller_task(void)
 		case READOUT:
 			amr_create_readout_message(data);
 			amr_serial.transmit(data, READ_OUT_LEN);
-			assert(amr_serial.init(9600));
+			APP_ASSERT_FALSE(amr_serial.init(9600));
 			break;
 
 		default:
@@ -113,6 +122,9 @@ void amr_poller_task(void)
 	}
 }
 
+/**
+ * @brief Initializes poller params
+ */
 void amr_poller_init(void)
 {
 	amr_timer_init(amr_poller_task);
