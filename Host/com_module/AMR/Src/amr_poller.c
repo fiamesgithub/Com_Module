@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
 #include "amr_poller.h"
 #include "amr_serial.h"
@@ -92,17 +93,19 @@ void amr_poller_task(void)
 
 	switch (amr_poller_state) {
 		case START:
+			assert(amr_serial.init(300));
 			amr_update_selected_meter(meter_id);
 			amr_create_start_message(amr_get_poller_struct()->serial_no[meter_id],
 									data,
 									amr_get_poller_struct()->model[meter_id]);
 
-			amr_transmit_data(data, strlen(data));
+			amr_serial.transmit(data, strlen(data));
 			break;
 
 		case READOUT:
 			amr_create_readout_message(data);
-			amr_transmit_data(data, READ_OUT_LEN);
+			amr_serial.transmit(data, READ_OUT_LEN);
+			assert(amr_serial.init(9600));
 			break;
 
 		default:

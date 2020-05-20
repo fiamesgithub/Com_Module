@@ -7,6 +7,12 @@
 
 #include "CppUTest/CommandLineTestRunner.h"
 
+extern "C"
+{
+#include "app_assert.h"
+#include "amr_serial.h"
+}
+
 int main(void)
 {
 	const char * av_override[] = { "exe", "-v" };
