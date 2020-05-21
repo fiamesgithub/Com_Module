@@ -46,6 +46,7 @@ bool amr_serial_is_receive_comp(bool is_rec_started, bool is_rec_timeout)
 
 /**
  * @brief Buffers serial receive data
+ * @note  Should be called in receive callback
  * @param ready_byte
  * @param buffer
  * @param idx
@@ -75,6 +76,27 @@ bool amr_serial_is_timeout(uint32_t *tick)
 }
 
 /**
+ * @brief Data Consumer should be pointed as function pointer
+ * @param rx_data_ready_cb
+ */
+void amr_serial_rx_init(vptr rx_data_ready_cb)
+{
+	amr_serial_get_structure()->rx_data_ready = rx_data_ready_cb;
+}
+
+/**
+ * @brief Clears the receive operation flags
+ * @param amr_serial
+ */
+void amr_serial_clear_rx_params(amr_serial_t *amr_serial)
+{
+	amr_serial->is_rec_started = false;
+	amr_serial->is_rec_timeout = false;
+	amr_serial->rx_idx = 0;
+}
+
+
+/**
  * @brief Triggers callback function when the data is ready to process data
  * @param amr_serial
  */
@@ -84,14 +106,6 @@ void amr_serial_is_rx_data_ready(amr_serial_t *amr_serial)
 	{
 		APP_ASSERT(amr_serial->rx_data_ready != NULL);
 		amr_serial->rx_data_ready();
+		amr_serial_clear_rx_params(amr_serial);
 	}
-}
-
-/**
- * @brief Data Consumer should be pointed as function pointer
- * @param rx_data_ready_cb
- */
-void amr_serial_rx_init(vptr rx_data_ready_cb)
-{
-	amr_serial_get_structure()->rx_data_ready = rx_data_ready_cb;
 }

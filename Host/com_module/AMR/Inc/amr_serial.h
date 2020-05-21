@@ -41,5 +41,6 @@ void amr_serial_rec_data_byte_ready(const char ready_byte, char* buffer, uint32_
 bool amr_serial_is_timeout(uint32_t *tick);
 void amr_serial_is_rx_data_ready(amr_serial_t *amr_serial);
 void amr_serial_rx_init(vptr rx_data_ready_cb);
+void amr_serial_clear_rx_params(amr_serial_t *amr_serial);
 
 #endif /* INC_AMR_SERIAL_H_ */

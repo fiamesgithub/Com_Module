@@ -100,7 +100,20 @@ TEST(amr_serial, isReceiveTimeoutOccured)
 	LONGS_EQUAL(0, tick);
 }
 
-TEST(amr_serial, isReceiveDataReadyForProcessing)
+TEST(amr_serial, clearReceiveProcessFlags)
+{
+	amr_serial.is_rec_started = true;
+	amr_serial.is_rec_timeout = true;
+	amr_serial.rx_idx = 1024;
+
+	amr_serial_clear_rx_params(&amr_serial);
+
+	CHECK_FALSE(amr_serial.is_rec_started);
+	CHECK_FALSE(amr_serial.is_rec_timeout);
+	LONGS_EQUAL(0, amr_serial.rx_idx);
+}
+
+TEST(amr_serial, receiveBufferBoundaryConditions)
 {
 
 }
