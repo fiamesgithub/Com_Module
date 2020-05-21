@@ -12,11 +12,7 @@
 
 void app_assert_failed(const char *file, int line);
 
-#define APP_ASSERT_TRUE(expr) \
-    if ((expr)) \
-        app_assert_failed(__FILE__, __LINE__)
-
-#define APP_ASSERT_FALSE(expr) \
+#define APP_ASSERT(expr) \
     if (!(expr)) \
         app_assert_failed(__FILE__, __LINE__)
 

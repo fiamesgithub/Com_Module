@@ -30,7 +30,7 @@ void amr_is_timer_elapsed(uint32_t* tick, uint32_t period)
 {
 	if (*tick >= period)
 	{
-		APP_ASSERT_TRUE(amr_timer_callback == NULL);
+		APP_ASSERT(amr_timer_callback != NULL);
 		amr_timer_callback();
 		*tick = 0;
 	}

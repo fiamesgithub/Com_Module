@@ -82,7 +82,7 @@ void amr_serial_is_rx_data_ready(amr_serial_t *amr_serial)
 {
 	if (amr_serial_is_receive_comp(amr_serial->is_rec_started, amr_serial->is_rec_timeout))
 	{
-		APP_ASSERT_TRUE(amr_serial->rx_data_ready == NULL);
+		APP_ASSERT(amr_serial->rx_data_ready != NULL);
 		amr_serial->rx_data_ready();
 	}
 }

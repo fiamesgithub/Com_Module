@@ -102,7 +102,7 @@ void amr_poller_task(void)
 
 	switch (amr_poller_state) {
 		case START:
-			APP_ASSERT_FALSE(amr_serial.init(300));
+			APP_ASSERT(amr_serial.init(300));
 			amr_update_selected_meter(meter_id);
 			amr_create_start_message(amr_get_poller_struct()->serial_no[meter_id],
 									data,
@@ -114,7 +114,7 @@ void amr_poller_task(void)
 		case READOUT:
 			amr_create_readout_message(data);
 			amr_serial.transmit(data, READ_OUT_LEN);
-			APP_ASSERT_FALSE(amr_serial.init(9600));
+			APP_ASSERT(amr_serial.init(9600));
 			break;
 
 		default:
