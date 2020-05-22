@@ -21,7 +21,6 @@ typedef struct
 
 typedef enum
 {
-	INIT,
 	START,
 	READOUT
 }amr_poller_state_t;

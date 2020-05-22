@@ -64,5 +64,5 @@ TEST(amr_poller, updateSelectedMeter)
 
 TEST(amr_poller, updatePollerState)
 {
-	CHECK_EQUAL(INIT, amr_get_poller_state());
+	CHECK_EQUAL(START, amr_get_poller_state());
 }
