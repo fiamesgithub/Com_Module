@@ -31,7 +31,6 @@
 #include <sys/time.h>
 #include <sys/times.h>
 
-#include "stm32f4xx.h"
 
 /* Variables */
 //#undef errno
@@ -79,13 +78,13 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
 return len;
 }
 
-int _write(int file, char *ptr, int len)
+__attribute__((weak)) int _write(int file, char *ptr, int len)
 {
 	int DataIdx;
 
 	for (DataIdx = 0; DataIdx < len; DataIdx++)
 	{
-		ITM_SendChar(*ptr++);
+		__io_putchar(*ptr++);
 	}
 	return len;
 }

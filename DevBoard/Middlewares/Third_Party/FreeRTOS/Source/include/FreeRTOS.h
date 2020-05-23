@@ -51,9 +51,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-void MX_FREERTOS_Init(void);
-
+void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 /* Application specific configuration options. */
 #include "FreeRTOSConfig.h"
 
