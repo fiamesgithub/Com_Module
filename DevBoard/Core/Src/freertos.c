@@ -121,15 +121,16 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_startMainTask */
 void startMainTask(void const * argument)
 {
-  /* init code for LWIP */
-  MX_LWIP_Init();
-  /* USER CODE BEGIN startMainTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END startMainTask */
+	/* init code for LWIP */
+	MX_LWIP_Init();
+	/* USER CODE BEGIN startMainTask */
+	/* Infinite loop */
+	for(;;)
+	{
+		printf("Task is running\n");
+		osDelay(1000);
+	}
+	/* USER CODE END startMainTask */
 }
 
 /* Private application code --------------------------------------------------*/

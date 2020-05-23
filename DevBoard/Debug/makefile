@@ -8,6 +8,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include UTILS/CPPUTEST/src/CppUTestExt/subdir.mk
+-include UTILS/CPPUTEST/src/CppUTest/subdir.mk
 -include Middlewares/Third_Party/LwIP/system/OS/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/netif/ppp/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/netif/subdir.mk
@@ -70,7 +72,7 @@ all: com_module_dev.elf secondary-outputs
 
 # Tool invocations
 com_module_dev.elf: $(OBJS) $(USER_OBJS) E:\GitRepo\Com_Module\DevBoard\STM32F746ZGTX_FLASH.ld
-	arm-none-eabi-g++ -o "com_module_dev.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"E:\GitRepo\Com_Module\DevBoard\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="com_module_dev.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "com_module_dev.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"E:\GitRepo\Com_Module\DevBoard\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="com_module_dev.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
